@@ -137,7 +137,7 @@ namespace HelloApp.Services
             Console.WriteLine("Select user id.");
             Console.Write("=:>");
             int sId = int.Parse(Console.ReadLine());
-            User user = dbContext.Users.Single(x => x.Id == sId);
+            User user = dbContext.Users.Single(x => x.UserId == sId);
             return user;
         }
 

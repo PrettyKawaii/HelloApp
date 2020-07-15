@@ -8,13 +8,13 @@ namespace HelloApp.Data.Entity
     public class User
     {
         [Key]
-        public int Id { get; set; }
+        public int UserId { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
 
         public override string ToString()
         {
-            string info = $"{Id}.{Name}-{Age} ({Position})";
+            string info = $"{UserId}.{Name}-{Age} ({Position})";
             return info;
         }
 
@@ -38,6 +38,10 @@ namespace HelloApp.Data.Entity
                 return "User";
             return Position;
         }
+
+        public ICollection<UsersProjects> UsersProjects { get; set; }
+            
+
 
         // вызвать конструктор 2 строке.
         //перегрузіть метод стровкового представленія 

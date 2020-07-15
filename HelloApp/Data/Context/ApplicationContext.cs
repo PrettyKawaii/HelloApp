@@ -11,6 +11,10 @@ namespace HelloApp.Data.Context
         {
             public DbSet<User> Users { get; set; }
 
+            public DbSet<Project> Projects { get; set; }
+
+            //public DbSet<??> UsersProjects { get; set;}
+
             public AplicationContext()
             {
                 Database.EnsureCreated();
