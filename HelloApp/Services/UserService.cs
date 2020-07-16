@@ -11,12 +11,6 @@ namespace HelloApp.Services
     {
         AplicationContext dbContext { get; } = new AplicationContext();
 
-
-        public UserService()
-        {
-            dbContext = new AplicationContext();
-        }
-
         public void GI()
         {
             Console.WriteLine("");

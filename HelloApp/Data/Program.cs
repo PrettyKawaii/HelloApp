@@ -9,50 +9,47 @@ namespace HelloApp
 {
     class Program
     {
-        //static List<User> users = new List<User>();
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello World!");
-            //Console.ReadLine();
-
-            var service = new UserService();
-
-            service.GI();
+            SelectEnvironment();
         }
 
+        public static void SelectEnvironment()
+        {
+            var userService = new UserService();
+            var projectService = new ProjectService();
+            Console.WriteLine("1.UserGI; 2.ProjectGI; 3. Exit");
+            Console.Write(">");
+            string selection = Console.ReadLine();
+            
+            switch(selection)
+            {
+                case "1":
+                    userService.GI();
+                    break;
 
-    }
+                case "2":
+                    projectService.GI();
+                    break;
 
-    // public class User
-    //{
-    //    [Key]
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //    public int Age { get; set; }
-    //    public string Position { get; set; }
-    //}
+                case "3":
+                    userService.Exit();
+                    break;
 
+                default:
+                    UnknownS();
+                    break;
+            }
+        }
 
+        public static void UnknownS()
+        {
+            Console.WriteLine("Unknown selection, please try again.");
+            Console.ReadLine();
 
-
-
-
-    //public class AplicationContext : DbContext
-    //{
-    //    public DbSet<User> Users { get; set; }
-
-    //    public AplicationContext()
-    //    {
-    //        Database.EnsureCreated();
-    //    }
-
-    //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //    {
-    //        optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=helloappdb;Trusted_Connection=True;");
-    //    }
-
-    //}
-        
+            SelectEnvironment();
+        }
+    }        
 }
     
     
