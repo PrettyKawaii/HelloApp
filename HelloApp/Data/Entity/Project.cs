@@ -27,7 +27,7 @@ namespace HelloApp.Data.Entity
         }
 
 
-
+        //smth to commit
 
     }
 }
