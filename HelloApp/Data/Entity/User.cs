@@ -8,13 +8,13 @@ namespace HelloApp.Data.Entity
     public class User
     {
         [Key]
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
 
         public override string ToString()
         {
-            string info = $"{UserId}.{Name}-{Age} ({Position})";
+            string info = $"{Id}.{Name}-{Age} ({Position})";
             return info;
         }
 

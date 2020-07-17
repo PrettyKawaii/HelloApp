@@ -15,7 +15,7 @@ namespace HelloApp.Services
         {
             Console.WriteLine("");
             Console.WriteLine("Welcome to User GI.");
-            Console.WriteLine("1.Output all users; 2.Exit; 3.ManageUsers");
+            Console.WriteLine("1.Output all users; 2.Exit; 3.ManageUsers 4.Return");
             Console.Write("=:>");
 
             string selection = Console.ReadLine();
@@ -57,6 +57,10 @@ namespace HelloApp.Services
 
                 case "3":
                     ManageUsers();
+                    break;
+
+                case "4":
+                    Program.SelectEnvironment();
                     break;
 
                 default:
@@ -131,7 +135,7 @@ namespace HelloApp.Services
             Console.WriteLine("Select user id.");
             Console.Write("=:>");
             int sId = int.Parse(Console.ReadLine());
-            User user = dbContext.Users.Single(x => x.UserId == sId);
+            User user = dbContext.Users.Single(x => x.Id == sId);
             return user;
         }
 

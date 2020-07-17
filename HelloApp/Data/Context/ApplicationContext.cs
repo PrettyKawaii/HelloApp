@@ -13,6 +13,8 @@ namespace HelloApp.Data.Context
 
             public DbSet<Project> Projects { get; set; }
 
+            public DbSet<UsersProjects> UsersProjects { get; set; }
+
             //public DbSet<??> UsersProjects { get; set;}
 
             public AplicationContext()

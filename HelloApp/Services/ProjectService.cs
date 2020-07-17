@@ -71,7 +71,7 @@ namespace HelloApp.Services
 
         public void ManageProjects()
         {
-            Console.WriteLine("1.Add; 2.Delete; 3.Exit;");
+            Console.WriteLine("1.Add; 2.Delete; 3.Exit; 4.Return");
             Console.Write("->");
             string selection = Console.ReadLine();
 
@@ -87,6 +87,10 @@ namespace HelloApp.Services
 
                 case "3":
                     Exit();
+                    break;
+
+                case "4":
+                    Program.SelectEnvironment();
                     break;
 
                 default:
@@ -126,7 +130,7 @@ namespace HelloApp.Services
             Console.WriteLine("Select project id.");
             Console.Write("->");
             int id = int.Parse(Console.ReadLine());
-            Project project = dbContext.Projects.Single(x => x.ProjectId == id);
+            Project project = dbContext.Projects.Single(x => x.Id == id);
             return project;
         }
     }

@@ -10,19 +10,21 @@ namespace HelloApp.Data.Entity
         ICollection<UsersProjects> UsersProjects { get; set; }
 
         [Key]
-        public int ProjectId { get; set; }
+        //TODO Rename to Id
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public override string ToString()
         {
-            string info = $"{ProjectId}.{Title}";
+            string info = $"{Id}.{Title}";
             return info;
         }
      
 
         public Project()
         {
-            string dTitle = "NewProject" + $"{ProjectId}";
+            string dTitle = "NewProject" + $"{Id}";
             Title = dTitle;
         }
 
