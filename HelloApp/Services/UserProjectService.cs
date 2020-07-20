@@ -16,7 +16,7 @@ namespace HelloApp.Services
         public void GI()
         {
             Console.WriteLine("Welcome to UserProject GI.");
-            Console.WriteLine("1.Display connections; 2.Connect user to project; 3.Exit; 4.Return");
+            Console.WriteLine("1.Display connections; 2.Manage Connections; 3.Exit; 4.Return");
             Console.Write(">");
             string selection = Console.ReadLine();
             Selection(selection);
@@ -32,8 +32,7 @@ namespace HelloApp.Services
                     break;
 
                 case "2":
-                    Connect();
-                    GI();
+                    ManageConnetion();
                     break;
 
                 case "3":
@@ -73,6 +72,38 @@ namespace HelloApp.Services
             dbContext.SaveChanges();
         }
 
+        public void Disconnect()
+        {
+            UsersProjects connection = Select();
+            Console.WriteLine("Connection was deleted.");
+
+            dbContext.UsersProjects.Remove(connection);
+            dbContext.SaveChanges();
+        }
+
+        public void ManageConnetion()
+        {
+            Console.WriteLine("1.Connect; 2.Disconnect; 3.Return");
+            string choice = Console.ReadLine();
+
+            switch(choice)
+            {
+                case "1":
+                    Connect();
+                    GI();
+                    break;
+
+                case "2":
+                    Disconnect();
+                    GI();
+                    break;
+
+                case "3":
+                    GI();
+                    break;
+            }
+        }
+
         public void Display()
         {
             var stuff = dbContext.UsersProjects
@@ -84,6 +115,17 @@ namespace HelloApp.Services
                 string y = x.ToString();
                 Console.WriteLine(y); 
             }
+        }
+
+        public UsersProjects Select()
+        {
+            Display();
+            Console.WriteLine("Select connection id.");
+            Console.Write(">");
+            int id = int.Parse(Console.ReadLine());
+
+            UsersProjects connection = dbContext.UsersProjects.Single(x => x.Id == id);
+            return connection;
         }
 
     }
