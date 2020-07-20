@@ -1,6 +1,8 @@
-﻿using System;
+﻿using HelloApp.Data.Context;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 
 namespace HelloApp.Data.Entity
@@ -38,10 +40,11 @@ namespace HelloApp.Data.Entity
                 return "User";
             return Position;
         }
+      
 
         public ICollection<UsersProjects> UsersProjects { get; set; }
-            
 
+        AplicationContext dbContext { get; } = new AplicationContext();
 
         // вызвать конструктор 2 строке.
         //перегрузіть метод стровкового представленія 
