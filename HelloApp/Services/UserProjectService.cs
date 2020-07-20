@@ -1,5 +1,6 @@
 ﻿using HelloApp.Data.Context;
 using HelloApp.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,7 +75,10 @@ namespace HelloApp.Services
 
         public void Display()
         {
-            var stuff = dbContext.UsersProjects;
+            var stuff = dbContext.UsersProjects
+                .Include(x => x.Project).Include(x => x.User)
+                .ToList();
+                
             foreach(UsersProjects x in stuff)
             {
                 string y = x.ToString();
