@@ -19,7 +19,8 @@ namespace HelloApp
             var userService = new UserService();
             var projectService = new ProjectService();
             var userProjectService = new UserProjectService();
-            Console.WriteLine("1.UserGI; 2.ProjectGI; 3.UserProjectGI 4. Exit");
+            var asyncing = new Async();
+            Console.WriteLine("1.UserGI; 2.ProjectGI; 3.UserProjectGI 4. Exit 5. Async");
             Console.Write(">");
             string selection = Console.ReadLine();
             
@@ -40,6 +41,14 @@ namespace HelloApp
                 case "4":
                     userService.Exit();
                     break;
+
+                case "5":
+                    asyncing.Method1();
+                    asyncing.Method2();
+                    Console.WriteLine("End");
+                    Console.ReadLine();
+                    break;
+                    
 
                 default:
                     UnknownS();
