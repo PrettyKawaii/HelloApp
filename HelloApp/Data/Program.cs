@@ -18,7 +18,8 @@ namespace HelloApp
         {
             var userService = new UserService();
             var projectService = new ProjectService();
-            Console.WriteLine("1.UserGI; 2.ProjectGI; 3. Exit");
+            var userProjectService = new UserProjectService();
+            Console.WriteLine("1.UserGI; 2.ProjectGI; 3.UserProjectGI 4. Exit");
             Console.Write(">");
             string selection = Console.ReadLine();
             
@@ -33,6 +34,10 @@ namespace HelloApp
                     break;
 
                 case "3":
+                    userProjectService.GI();
+                    break;
+
+                case "4":
                     userService.Exit();
                     break;
 

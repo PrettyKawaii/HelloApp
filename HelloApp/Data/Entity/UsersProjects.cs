@@ -25,6 +25,12 @@ namespace HelloApp.Data.Entity
         [ForeignKey(nameof(UserId))]
         public User User { get; set; }
 
-      
+        public override string ToString()
+        {
+            string info = $"{Id} = {User.Id}.{User.Name} - {Project.Id}.{Project.Title}";   
+            return info;
+        }
+
+
     }
 }

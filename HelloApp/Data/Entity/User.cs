@@ -1,6 +1,8 @@
-﻿using System;
+﻿using HelloApp.Data.Context;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
 
 namespace HelloApp.Data.Entity
@@ -8,13 +10,13 @@ namespace HelloApp.Data.Entity
     public class User
     {
         [Key]
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
 
         public override string ToString()
         {
-            string info = $"{UserId}.{Name}-{Age} ({Position})";
+            string info = $"{Id}.{Name}-{Age} ({Position})";
             return info;
         }
 
@@ -38,10 +40,11 @@ namespace HelloApp.Data.Entity
                 return "User";
             return Position;
         }
+      
 
         public ICollection<UsersProjects> UsersProjects { get; set; }
-            
 
+        AplicationContext dbContext { get; } = new AplicationContext();
 
         // вызвать конструктор 2 строке.
         //перегрузіть метод стровкового представленія 

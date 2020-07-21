@@ -15,7 +15,7 @@ namespace HelloApp.Services
         {
             Console.WriteLine("");
             Console.WriteLine("Welcome to User GI.");
-            Console.WriteLine("1.Output all users; 2.Exit; 3.ManageUsers");
+            Console.WriteLine("1.Explore; 2.Exit; 3.ManageUsers 4.Return");
             Console.Write("=:>");
 
             string selection = Console.ReadLine();
@@ -47,8 +47,7 @@ namespace HelloApp.Services
             switch(selection)
             {
                 case "1":
-                    GetUsers();
-                    GI();
+                    Explore();
                     break;
 
                 case "2":
@@ -57,6 +56,10 @@ namespace HelloApp.Services
 
                 case "3":
                     ManageUsers();
+                    break;
+
+                case "4":
+                    Program.SelectEnvironment();
                     break;
 
                 default:
@@ -131,7 +134,7 @@ namespace HelloApp.Services
             Console.WriteLine("Select user id.");
             Console.Write("=:>");
             int sId = int.Parse(Console.ReadLine());
-            User user = dbContext.Users.Single(x => x.UserId == sId);
+            User user = dbContext.Users.Single(x => x.Id == sId);
             return user;
         }
 
@@ -182,5 +185,56 @@ namespace HelloApp.Services
             GI();
         }
 
+        public void Explore()
+        {
+            Console.WriteLine("1.Output all; 2.Search by name; 3.Return");
+            string choice = Console.ReadLine();
+
+            switch(choice)
+            {
+                case "1":
+                    GetUsers();
+                    GI();
+                    break;
+
+                case "2":
+                    Search();
+                    GI();
+                    break;
+
+                case "3":
+                    GI();
+                    break;
+
+                default:
+                    UnknownS();
+                    break;
+            }
+        }
+
+        public void Search()
+        {
+            Console.Write("Enter user name: ");
+            string name = Console.ReadLine();
+
+            User user = dbContext.Users.SingleOrDefault(x => x.Name.Contains(name));
+            if(user != null)
+            {
+                Console.WriteLine("Succes!");
+                GetUser(user);                
+            }
+            else
+            {
+                Console.WriteLine();
+                Console.WriteLine($"Unfortunately user which has a name '{name}' does not exist.");
+                PressEnter();
+            }
+
+        }
+        public void PressEnter()
+        {
+            Console.Write("Press Enter to continue..");
+            Console.ReadLine();
+        }
     }
 }
